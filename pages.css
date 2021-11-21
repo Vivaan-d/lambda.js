@@ -1,22 +1,26 @@
 nav{
     background: cornflowerblue;
     position: fixed;
-    width:100%;
+    width:98%;
     height:23px;
     top:0;
-    padding: 5px;
+    padding: 1%;
     color: white;
     text-align: left;
 }
 *{font-family: 'Montserrat', sans-serif;}
 nav>a{
-    text-decoration: none;
+    transition: text-decoration 0.5s, color 0.5s;
+    text-decoration: underline transparent;
+    float: right;
+    color:white;
 }
 nav>a:hover{
-    text-decoration: underline blue;
+    text-decoration: underline rgb(236, 205, 27);
+    color: rgb(236, 205, 27);
 }
 body{
-    padding-top: 30px;
+    padding-top: 100px;
     margin: 0;
     text-align: center;
 }

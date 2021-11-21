@@ -19,3 +19,4 @@ g.window = {
 Object.freeze(g)
 /* Freeze Window Controls object (g.window) */
 Object.freeze(g.window)
+v = g.v;
