@@ -8,6 +8,7 @@ nav{
     color: white;
     text-align: left;
 }
+*{font-family: 'Montserrat', sans-serif;}
 nav>a{
     text-decoration: none;
 }
