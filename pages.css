@@ -9,9 +9,16 @@ nav{
     text-align: left;
 }
 *{font-family: 'Montserrat', sans-serif;}
-nav>a{
+a{
     transition: text-decoration 0.5s, color 0.5s;
     text-decoration: underline transparent;
+    color:inherit;
+}
+a:hover{
+    text-decoration: underline deepskyblue;
+    color: deepskyblue;
+}
+nav>a{
     float: right;
     color:white;
 }
@@ -19,6 +26,7 @@ nav>a:hover{
     text-decoration: underline rgb(236, 205, 27);
     color: rgb(236, 205, 27);
 }
+
 body{
     padding-top: 100px;
     margin: 0;
