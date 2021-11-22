@@ -1,1 +1,2 @@
-/release /1.0.0/g.js 301
+# set /release to have the same content as the latest release
+/release /1.0.0/g.js 404
