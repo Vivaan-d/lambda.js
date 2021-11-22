@@ -10,8 +10,8 @@ g.element=(selector, command, commandValue)=>{
 }
 g.getElement = (selector, get) => {
     if (get == 'HTML' || get == 'html'){return document.querySelector(selector).innerHTML} else {return document.querySelector(selector)}}
-g.replace = (selector, ...replaceparams) => {
-    document.querySelector(selector).replace(replaceparams)
+g.replaceHTML = (selector, ...replaceparams) => {
+    return document.querySelector(selector).innerHTML.replace(replaceparams)
 }
 g.window = {
     open: (...params)=>{window.open(params)}
