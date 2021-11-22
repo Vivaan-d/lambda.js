@@ -6,10 +6,12 @@ V1.0.0
 const g = {};
 g.v = {/* variables */};
 g.element=(selector, command, commandValue)=>{
-    if (command == 'HTML' || command == 'html'){document.querySelector(selector).innerHTML = commandValue}
+    if (command == 'HTML'){document.querySelector(selector).innerHTML = commandValue}
+    else if (command == 'html'){document.querySelector(selector).innerHTML = commandValue}
 }
 g.getElement = (selector, get) => {
-    if (get == 'HTML' || get == 'html'){return document.querySelector(selector).innerHTML} else {return document.querySelector(selector)}}
+    if (get == 'HTML'){return document.querySelector(selector).innerHTML} 
+    else if (get == 'html'){return document.querySelector(selector).innerHTML} else {return document.querySelector(selector)}}
 g.replaceHTML = (selector, ...replaceparams) => {
     return document.querySelector(selector).innerHTML.replace(replaceparams)
 }
