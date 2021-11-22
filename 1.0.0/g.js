@@ -6,9 +6,13 @@ V1.0.0
 const g = {};
 g.v = {/* variables */};
 g.element=(selector, command, commandValue)=>{
-    if (command == 'HTML'){document.querySelector(selector).innerHTML = commandValue}
+    if (command == 'HTML' || command == 'html'){document.querySelector(selector).innerHTML = commandValue}
 }
-g.getElement = (...params) => {document.querySelector(...params)}
+g.getElement = (selector, get) => {
+    if (get == 'HTML' || get == 'html'){return document.querySelector(selector).innerHTML} else {return document.querySelector(selector)}}
+g.replace = (selector, ...replaceparams) => {
+    document.querySelector(selector).replace(replaceparams)
+}
 g.window = {
     open: (...params)=>{window.open(params)}
 }
