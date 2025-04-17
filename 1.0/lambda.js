@@ -22,11 +22,14 @@ const λ = {};
 λ.window = {
     open: (...params)=>{window.open(params)}
 }
-λ.alert=(arg1,arg2)=>{
+λ.alert=(arg1,arg2,timeout)=>{
     let alertArr=λ.tmpl.alert.split("||")
     let elm=document.createElement("div")
     λ.q("body").appendChild(elm)
     elm.innerHTML=alertArr[0]+arg1+alertArr[1]+arg2+alertArr[2]
+    setTimeout(() => {
+        elm.remove()
+    }, timeout);
 }
 Object.freeze(λ)
 Object.freeze(λ.window)
