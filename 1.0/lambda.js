@@ -6,7 +6,7 @@ V1.0.1
 const λ = {};
 λ.v = {};
 λ.tmpl={
-    alert:`<div class="lambda-alert" style="display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
+    alert:`<div class="lambda-alert" style="padding:5px;display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
 }
 λ.q=(...qs)=>{return document.querySelector(...qs)}
 λ.lw=(x)=>{return String(x).toLowerCase()}
