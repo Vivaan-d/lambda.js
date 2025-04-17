@@ -1,13 +1,15 @@
 /*
 lambda.JS
 Reintroduction
-V1.0.0
+V1.0.1
 */
 const λ = {};
-λ.v = {/* variables */};
-λ.element=(selector, command, commandValue)=>{
-    if (command == 'HTML'){document.querySelector(selector).innerHTML = commandValue}
-    else if (command == 'html'){document.querySelector(selector).innerHTML = commandValue}
+λ.v = {};
+λ.lw=(x)=>{String(x).toLowerCase()}
+λ.lwArr=(...x)=>{for(let i=0,i<x.length,i++){String(x[i]).toLowerCase()}}
+λ.modf=(elm, cmd, ...val)=>{
+    if(cmd=='HTML'){document.querySelector(elm).innerHTML=val[0]}
+    else if(cmd=='idk'){}
 }
 λ.getElement = (selector, get) => {
     if (get == 'HTML'){return document.querySelector(selector).innerHTML} 
