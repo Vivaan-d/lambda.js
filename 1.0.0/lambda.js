@@ -1,7 +1,7 @@
 /*
 lambda.JS
 Reintroduction
-V1.0.1
+V1.0.0
 */
 const λ = {};
 λ.v = {/* variables */};
