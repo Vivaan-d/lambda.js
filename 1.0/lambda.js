@@ -6,7 +6,7 @@ V1.0.1
 const λ = {};
 λ.v = {};
 λ.tmpl={
-    alert:`<div style="display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
+    alert:`<div class="lambda-alert" style="display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
 }
 λ.q=(...qs)=>{return document.querySelector(...qs)}
 λ.lw=(x)=>{return String(x).toLowerCase()}
@@ -18,14 +18,15 @@ const λ = {};
 λ.inhtml = (elm) => {
     return λ.q(elm).innerHTML
 }
-λ.replaceHTML = (elm, ...replaceparams) => {λ.q(elm).innerHTML.replace(...replaceparams)}
+λ.replaceHTML = (elm, ...replaceparams) => {λ.q(elm).innerHTML=λ.q(elm).innerHTML.replace(...replaceparams)}
 λ.window = {
     open: (...params)=>{window.open(params)}
 }
 λ.alert=(arg1,arg2)=>{
     let alertArr=λ.tmpl.alert.split("||")
-    
-    alertArr[0]+arg1+alertArr[1]+arg2+alertArr[2]
+    let elm=document.createElement("div")
+    λ.q("body").appendChild(elm)
+    elm.innerHTML=alertArr[0]+arg1+alertArr[1]+arg2+alertArr[2]
 }
 Object.freeze(λ)
 Object.freeze(λ.window)
