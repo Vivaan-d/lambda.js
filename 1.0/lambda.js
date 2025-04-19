@@ -47,6 +47,9 @@ const λ = {};
     xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
+λ.replacedoc=(elm,x,y)=>{
+    λ.q(elm).innerHTML=λ.inhtml(elm).replace(x,y)
+}
 Object.freeze(λ)
 Object.freeze(λ.window)
 Object.freeze(λ.tmpl)
