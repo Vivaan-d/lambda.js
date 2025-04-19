@@ -2,6 +2,9 @@
 lambda.JS
 Reintroduction
 V1.0.1
+
+GitHub & Documentation: 
+https://github.com/Vivaan-d/lambda.js
 */
 const λ = {};
 λ.v = {};
@@ -18,6 +21,12 @@ const λ = {};
 λ.inhtml = (elm) => {
     return λ.q(elm).innerHTML
 }
+
+λ.addhtml = (elm,str) => {
+    λ.q(elm).innerHTML+=String(str)
+    return λ.q(elm).innerHTML
+}
+
 λ.replaceHTML = (elm, ...replaceparams) => {λ.q(elm).innerHTML=λ.q(elm).innerHTML.replace(...replaceparams)}
 λ.window = {
     open: (...params)=>{window.open(params)}
