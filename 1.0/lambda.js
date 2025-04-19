@@ -31,7 +31,15 @@ const λ = {};
         elm.remove()
     }, timeout);
 }
+λ.httpgetxml=(address,func)=>{
+    var xhr=new XMLHttpRequest
+    xhr.open("GET",address)
+    xhr.send()
+    xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
+    xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseXML,xhr.status,xhr.statusText);}});
+}
 Object.freeze(λ)
 Object.freeze(λ.window)
 Object.freeze(λ.tmpl)
-v = λ.v;
+const v = λ.v;
+const lambda=λ

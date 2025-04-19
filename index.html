@@ -33,6 +33,7 @@
 <section><h3 id="1">See it in action</h3>Simple JavaScript Selectors<pre><code class="lang-javascript">λ.q("p") // Returns first p element</code></pre>
   Built-in alerts obsolete? We got alerts
     <pre><code>λ.alert("x","y") // displays alert element</code></pre>This makes a new variable (or property of λ.v also accessible as simply v). You can use them to create global variables effortlessly and modify inside functions and such.<pre><code class="lang-javascript">λ.v.text = &quot;Hello World&quot;</code></pre></section>
+    Anyways. Here's a evaluate input for you<input id="eval"><button onclick="eval(λ.q('#eval').value)">Evaluate</button>
     <footer style="color:white;background-color: black;position:relative;bottom:0;margin-top: 30px;padding:30px;font-family: 'Beau Rivage',cursive;width:100%;left:0;right:0;font-style: oblique;font-size: 24px;">Thank you for checking out my javascript library! More is to come in the foreseeable future!<br><br><bold style="font-family: 'Lavishly Yours';">&copy; Vivaan D - 2025. All rights reserved.</bold></footer>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
