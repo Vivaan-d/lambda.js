@@ -31,7 +31,7 @@ const λ = {};
         elm.remove()
     }, timeout);
 }
-λ.httpgetxml=(address,func)=>{
+λ.getxhr=(address,func)=>{
     var xhr=new XMLHttpRequest
     xhr.open("GET",address)
     xhr.send()
