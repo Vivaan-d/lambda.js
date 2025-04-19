@@ -45,7 +45,7 @@ const λ = {};
     xhr.open("GET",address)
     xhr.send()
     xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
-    xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.response,xhr.status,xhr.statusText);}});
+    xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
 Object.freeze(λ)
 Object.freeze(λ.window)
