@@ -56,7 +56,7 @@ const λ = (qs,ch,all) => {
     xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
-λ.replaceHTML,λ.replacehtml,λ.replace,λ.rplc=(elm,x,y)=>{
+λ.replaceHTML=(elm,x,y)=>{
     λ.q(elm).innerHTML=λ.inhtml(elm).replace(x,y)
 }
 λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval)}else{for (let i=0;i<amt;i++) {func()}}}
