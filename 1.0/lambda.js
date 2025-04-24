@@ -23,19 +23,16 @@ const λ = (qs,ch,all) => {
     alert:`<div class="lambda-alert" style="padding:5px;display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
 }
 λ.q=(qs,all)=>{if(all){return document.querySelectorAll(qs)}else{return document.querySelector(qs)}}
+λ.elm=(e)=>{if(typeof e == "object"){return e}else if(typeof e=="string"){return λ(e)}else{console.warn(`λ Warning: variable "${e}" can not be parsed as an element`)}}
 λ.lw=(x)=>{return String(x).toLowerCase()}
 λ.hw=(x)=>{return String(x).toUpperCase()}
-λ.modf=(elm, cmd, ...val)=>{
-    if(λ.lw(cmd)=='html'){λ.q(elm).innerHTML=val[0]}
-    else if(cmd=='del'||cmd=='delete'){λ.q(elm).remove()}
-}
 λ.inhtml=(elm) => {
-    return λ.q(elm).innerHTML
+    return λ.elm(elm).innerHTML
 }
 
 λ.addhtml=(elm,str) => {
-    λ.q(elm).innerHTML+=String(str)
-    return λ.q(elm).innerHTML
+    λ.elm(elm).innerHTML+=String(str)
+    return λ.elm(elm).innerHTML
 }
 λ.window={
     open: (...params)=>{window.open(...params)}
@@ -57,7 +54,7 @@ const λ = (qs,ch,all) => {
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
 λ.replaceHTML=(elm,x,y)=>{
-    elm.innerHTML=λ.inhtml(elm).replace(x,y)
+    λ.elm(elm).innerHTML=λ.elm(elm).innerHTML.replace(x,y)
 }
 λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval)}else{for (let i=0;i<amt;i++) {func()}}}
 Object.freeze(λ)
