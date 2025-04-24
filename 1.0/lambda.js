@@ -57,7 +57,7 @@ const λ = (qs,ch,all) => {
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
 λ.replaceHTML=(elm,x,y)=>{
-    λ.q(elm).innerHTML=λ.inhtml(elm).replace(x,y)
+    elm.innerHTML=λ.inhtml(elm).replace(x,y)
 }
 λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval)}else{for (let i=0;i<amt;i++) {func()}}}
 Object.freeze(λ)
