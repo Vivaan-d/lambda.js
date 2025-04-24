@@ -56,7 +56,7 @@ const λ = (qs,ch,all) => {
 λ.replaceHTML=(elm,x,y)=>{
     λ.elm(elm).innerHTML=λ.elm(elm).innerHTML.replace(x,y)
 }
-λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval);return s}else{for (let i=0;i<amt;i++) {func()}}}
+λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval);return s;}else{for (let i=0;i<amt;i++) {func()}}}
 Object.freeze(λ)
 Object.freeze(λ.window)
 Object.freeze(λ.tmpl)
