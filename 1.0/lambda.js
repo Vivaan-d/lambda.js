@@ -1,13 +1,24 @@
 /*
-lambda.JS
+lambda.JS (λ)
 Reintroduction
 V1.0.1
 
 GitHub & Documentation: 
 https://github.com/Vivaan-d/lambda.js
 */
-const λ = (...qs) => {
-    λ.q(...qs)
+const λ = (qs,all,ch) => {
+    if(ch&&!all){
+        let elm=λ.q(qs)
+        return {
+            elm:elm,
+            delete:()=>λ.q(qs).remove(),
+            html:()=>{return {elm:elm,replace:(x,y)=>{λ.replaceHTML(elm,x,y);return this}}}
+        }
+    }else if(all&&ch){
+        console.warn("λ Warning: all in λ(qs,all,ch) has to be false to chain")
+    }else{
+        return λ.q(qs,all)
+    }
 };
 λ.v = {};
 λ.tmpl={
@@ -28,8 +39,6 @@ const λ = (...qs) => {
     λ.q(elm).innerHTML+=String(str)
     return λ.q(elm).innerHTML
 }
-
-λ.replaceHTML = (elm, ...replaceparams) => {λ.q(elm).innerHTML=λ.q(elm).innerHTML.replace(...replaceparams)}
 λ.window = {
     open: (...params)=>{window.open(...params)}
 }
@@ -49,7 +58,7 @@ const λ = (...qs) => {
     xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
-λ.replacedoc=(elm,x,y)=>{
+λ.replaceHTML=(elm,x,y)=>{
     λ.q(elm).innerHTML=λ.inhtml(elm).replace(x,y)
 }
 λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval)}else{for (let i=0;i<amt;i++) {func()}}}
