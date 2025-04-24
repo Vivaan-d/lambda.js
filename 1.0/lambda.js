@@ -29,15 +29,15 @@ const λ = (qs,ch,all) => {
     if(λ.lw(cmd)=='html'){λ.q(elm).innerHTML=val[0]}
     else if(cmd=='del'||cmd=='delete'){λ.q(elm).remove()}
 }
-λ.inhtml = (elm) => {
+λ.inhtml=(elm) => {
     return λ.q(elm).innerHTML
 }
 
-λ.addhtml = (elm,str) => {
+λ.addhtml=(elm,str) => {
     λ.q(elm).innerHTML+=String(str)
     return λ.q(elm).innerHTML
 }
-λ.window = {
+λ.window={
     open: (...params)=>{window.open(...params)}
 }
 λ.alert=(arg1,arg2,timeout=2000)=>{
