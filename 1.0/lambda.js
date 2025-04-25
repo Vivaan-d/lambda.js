@@ -6,6 +6,8 @@ V1.0.1
 GitHub & Documentation: 
 https://github.com/Vivaan-d/lambda.js
 */
+var λDEVMODE=false;
+var devlog=(log,warn)=>{if(λDEVMODE)warn?console.warn("λ DEVLOG WARNING: "+String(log)):console.log("λ DEVLOG: "+String(log))}
 const λ = (qs,ch,all) => {
     if(ch){
         let elm=λ.q(qs)
@@ -14,14 +16,17 @@ const λ = (qs,ch,all) => {
             elm:elm,
             ex:[],
             delete:()=>λ.q(qs).remove(),
-            replace:(x,y)=>{λ.replaceHTML(elm,x,y);return f},
-            add:(x)=>{λ.addhtml(elm,x);return f},
-            set:(x)=>{λ.sethtml(elm,x);return f},
-            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:λ(d),c:λ(d,1)});return f}
+            replace:(x,y)=>{λ.replaceHTML(elm,x,y);return f;devlog(this);devlog(f);},
+            add:(x)=>{λ.addhtml(elm,x);return f;devlog(this);devlog(f);},
+            set:(x)=>{λ.sethtml(elm,x);return f;devlog(this);devlog(f);},
+            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:λ(d),c:λ(d,1)});return f;devlog(this);devlog(f);}
         }
-        return f
+        return f;
+        if(all)devlog(all," all + ch");
     }else{
-        return λ.q(qs,all)
+        let a=λ.q(qs,all)
+        return a
+        devlog(qs,all,a);
     }
 };
 λ.v = {};
