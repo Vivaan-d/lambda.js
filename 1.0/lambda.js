@@ -31,6 +31,21 @@ const λ = (qs,ch,all) => {
         devlog(qs,all,a);
     }
 };
+λ.css = (elm) => { // lazily made
+    let elm=λ.elm(qs)
+    let f={
+        elm:elm,
+        bg:(s,m)=>{if(m=="col"){elm.style.background-color==s}else if(m=="img"){elm.style.background-image==s}else if(m=="pos"){elm.style.background-position==s}else if(m=="rep"){elm.style.background-repeat==s}else if(m=="attachment"){elm.style.background-attachment==s}else{elm.style.background==s};return this},
+        bdr:(s)=>{elm.style.bdr=s;return this;},
+        pos:(s)=>{elm.style.position=s;return this;},
+        block:()=>{elm.style.display="block";return this;},
+        hw:(h,w)=>{if(h===false){elm.style.height=h};if(w===false){elm.style.width=w};return this;},
+        other:(s,st)=>{elm.style[st]=s;return this},
+        sesl:()=>{return λ(elm,1);},
+        λ:()=>{return λ(elm,1);}
+    }
+    return f;
+};
 λ.v = {};
 λ.tmpl={
     alert:`<div class="lambda-alert" style="border-radius:10%;border:solid,skyblue,2px;padding:5px;display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
