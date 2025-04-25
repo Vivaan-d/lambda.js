@@ -12,7 +12,7 @@ const λ = (qs,ch,all) => {
     if(ch){
         let elm=λ.q(qs)
         
-        let f= {
+        let f={
             elm:elm,
             ex:[],
             delete:()=>λ.q(qs).remove(),
