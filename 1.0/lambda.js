@@ -7,6 +7,7 @@ GitHub & Documentation:
 https://github.com/Vivaan-d/lambda.js
 */
 var λDEVMODE=false;
+var λDEVALERTVIS=true;
 var devlog=(log,warn)=>{if(λDEVMODE)warn?console.warn("λ DEVLOG WARNING: "+String(log)):console.log("λ DEVLOG: "+String(log))}
 const λ = (qs,ch,all) => {
     if(ch){
