@@ -7,17 +7,6 @@ GitHub & Documentation:
 https://github.com/Vivaan-d/lambda.js
 */
 
-
-/*
-
-FOR TOMORROW
-
-
-
-FIX THE CHAIN THING AFTER DUPE
-
-
-*/
 var λDEVMODE=false;
 var λDEVALERTVIS=true;
 var devlog=(log,warn)=>{if(λDEVMODE)warn?console.warn("λ DEVLOG WARNING: "+String(log)):console.log("λ DEVLOG: "+String(log))}
@@ -32,7 +21,7 @@ const λ = (qs,ch,all) => {
             replace:(x,y)=>{λ.replaceHTML(elm,x,y);return f;devlog(this);devlog(f);},
             add:(x)=>{λ.addhtml(elm,x);return f;devlog(this);devlog(f);},
             set:(x)=>{λ.sethtml(elm,x);return f;devlog(this);devlog(f);},
-            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:λ(d),c:λ(d,1)});return f;devlog(this);devlog(f);}
+            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});return f;devlog(this);devlog(f);}
         }
         return f;
         if(all)devlog(all," all + ch");
