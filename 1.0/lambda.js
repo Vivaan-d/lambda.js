@@ -12,7 +12,9 @@ const λ = (qs,ch,all) => {
         return {
             elm:elm,
             delete:()=>λ.q(qs).remove(),
-            html:()=>{return {elm:elm,replace:(x,y)=>{λ.replaceHTML(elm,x,y);return this}}}
+            replace:(x,y)=>{λ.replaceHTML(elm,x,y);return this},
+            add:(x)=>{λ.addhtml(elm,x);return this},
+            dupe:()=>{elm.insertAdjacentElement("afterend",λ.dupe(elm))}
         }
     }else{
         return λ.q(qs,all)
@@ -37,6 +39,7 @@ const λ = (qs,ch,all) => {
 λ.window={
     open: (...params)=>{window.open(...params)}
 }
+λ.dupe=(elm)=>{return λ.elm(elm).cloneNode(true)}
 λ.alert=(arg1,arg2,timeout=2000)=>{
     let alertArr=λ.tmpl.alert.split("||")
     let elm=document.createElement("div")
