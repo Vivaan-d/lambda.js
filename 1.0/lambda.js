@@ -11,10 +11,12 @@ const λ = (qs,ch,all) => {
         let elm=λ.q(qs)
         return {
             elm:elm,
+            ex:[],
             delete:()=>λ.q(qs).remove(),
             replace:(x,y)=>{λ.replaceHTML(elm,x,y);return this},
             add:(x)=>{λ.addhtml(elm,x);return this},
-            dupe:()=>{elm.insertAdjacentElement("afterend",λ.dupe(elm))}
+            set:(x)=>{λ.sethtml(elm,x);return this},
+            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);this.ex.push({e:λ(d),c:λ(d,1)});return this}
         }
     }else{
         return λ.q(qs,all)
@@ -34,6 +36,10 @@ const λ = (qs,ch,all) => {
 
 λ.addhtml=(elm,str) => {
     λ.elm(elm).innerHTML+=String(str)
+    return λ.elm(elm).innerHTML
+}
+λ.sethtml=(elm,str) => {
+    λ.elm(elm).innerHTML=String(str)
     return λ.elm(elm).innerHTML
 }
 λ.window={

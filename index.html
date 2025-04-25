@@ -26,7 +26,10 @@
       nav{
         margin:auto;position:fixed;top:0;left:0;
       }
-      
+      hello-friend{
+        color:rgb(4, 112, 0);
+        margin-right: 5px;
+      }
     </style>
 </head>
 <body><nav>
@@ -40,8 +43,8 @@
     <pre><code class="lang-javascript"  onclick="runcodeblock(this)">λ.alert("x","y",4000) // displays alert element for 4000ms</code></pre>
     Want a easy global variable? λ.v / v's got your trick! . You can use them to create global variables effortlessly and modify inside functions and such.
     <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.v.text/*or v.text*/ = &quot;Hello World&quot;</code></pre>
-    Want some funny chaining? λ() has got chaining!
-    <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ("p",1).addhtml()</code></pre>
+    Want some cool chaining? λ() has got chaining! <span class="hello-friend">hello friend</span> <- watch this change as you click on the below code... oh and duplicate
+    <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ(".hello-friend",1).replace("hello","Greetings,").addhtml("!").dupe().ex[0].c.set("Wow, I got duplicated and my html was set by λ.js!!")</code></pre>
   </section>
     Anyways. Here's a evaluate input for you to play around with -> <input id="eval"><button onclick="λ.alert('eval',eval(λ.q('#eval').value))">Evaluate</button>
     (console might be better)
