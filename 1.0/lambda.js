@@ -6,6 +6,18 @@ V1.0.1
 GitHub & Documentation: 
 https://github.com/Vivaan-d/lambda.js
 */
+
+
+/*
+
+FOR TOMORROW
+
+
+
+FIX THE CHAIN THING AFTER DUPE
+
+
+*/
 var λDEVMODE=false;
 var λDEVALERTVIS=true;
 var devlog=(log,warn)=>{if(λDEVMODE)warn?console.warn("λ DEVLOG WARNING: "+String(log)):console.log("λ DEVLOG: "+String(log))}
