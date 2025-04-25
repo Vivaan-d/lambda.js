@@ -11,7 +11,7 @@ var λDEVALERTVIS=true;
 var devlog=(log,warn)=>{if(λDEVMODE)warn?console.warn("λ DEVLOG WARNING: "+String(log)):console.log("λ DEVLOG: "+String(log))}
 const λ = (qs,ch,all) => {
     if(ch){
-        let elm=elm(qs)
+        let elm=λ.elm(qs)
         
         let f={
             elm:elm,
