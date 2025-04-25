@@ -9,15 +9,17 @@ https://github.com/Vivaan-d/lambda.js
 const λ = (qs,ch,all) => {
     if(ch){
         let elm=λ.q(qs)
-        return {
+        
+        let f= {
             elm:elm,
             ex:[],
             delete:()=>λ.q(qs).remove(),
-            replace:(x,y)=>{λ.replaceHTML(elm,x,y);return this},
-            add:(x)=>{λ.addhtml(elm,x);return this},
-            set:(x)=>{λ.sethtml(elm,x);return this},
-            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);this.ex.push({e:λ(d),c:λ(d,1)});return this}
+            replace:(x,y)=>{λ.replaceHTML(elm,x,y);return f},
+            add:(x)=>{λ.addhtml(elm,x);return f},
+            set:(x)=>{λ.sethtml(elm,x);return f},
+            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:λ(d),c:λ(d,1)});return f}
         }
+        return f
     }else{
         return λ.q(qs,all)
     }
