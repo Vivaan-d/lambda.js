@@ -57,7 +57,6 @@ const λ = (qs,ch,all) => {
     if(!qs){console.error("λ Error: 'qs' is not defined.");return null}
     let elm=λ.elm(qs)
     if(!elm.style){console.warn(`λ Error: Invalid element reference. Ref: ${typeof qs} 'qs': `,qs);return null}
-    let elm=λ.elm(qs)
     let f={
         elm:elm,
         bg:(s,m)=>{
