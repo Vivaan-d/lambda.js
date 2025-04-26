@@ -56,7 +56,7 @@
   <br>Grab some files with XMLHttpRequests, swiftly!
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.getxhr("https://jsonplaceholder.typicode.com/todos/1", (e,r) => λ.alert("XHR Result", r))</code></pre>
   <br>Hate for loops and setTimeouts? Got your back!  <span class="repeat-test">Hello! </span>
-  <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.repeat(() => λ("repeat-test").addhtml("I will be copied 3 times across 3 seconds, 1 second each."), 3, 1000)</code></pre>
+  <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.repeat(() => λ(".repeat-test",1).addhtml("I will be copied 3 times across 3 seconds, 1 second each."), 3, 1000)</code></pre>
   <br>Want swift JavaScript CSS Selectors, and even better CHAIN them? λ.css() has got you covered! <span class="css-test">Hello!</span>
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.css("body").bg("black").col("white").other("font-family","'Beau Rivage'")</code></pre>
   </section>
