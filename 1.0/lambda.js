@@ -18,17 +18,17 @@ const λ = (qs,ch,all) => {
             elm:elm,
             ex:[],
             delete:()=>λ.q(qs).remove(),
-            replace:(x,y)=>{λ.replacehtml(elm,x,y);return f;devlog(this);devlog(f);},
-            add:(x)=>{λ.addhtml(elm,x);return f;devlog(this);devlog(f);},
-            set:(x)=>{λ.sethtml(elm,x);return f;devlog(this);devlog(f);},
-            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});return f;devlog(this);devlog(f);}
+            replace:(x,y)=>{λ.replacehtml(elm,x,y);devlog(this);devlog(f);return f;},
+            add:(x)=>{λ.addhtml(elm,x);devlog(this);devlog(f);return f;},
+            set:(x)=>{λ.sethtml(elm,x);devlog(this);devlog(f);return f;},
+            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});devlog(this);devlog(f);return f;}
         }
-        return f;
         if(all)devlog(all," all + ch");
+        return f;
     }else{
         let a=λ.q(qs,all)
-        return a
         devlog(qs,all,a);
+        return a
     }
 };
 λ.cc = function(str) {
@@ -38,7 +38,7 @@ const λ = (qs,ch,all) => {
     let elm=λ.elm(qs)
     let f={
         elm:elm,
-        bg:(s,m)=>{if(m=="col"){elm.style.backgroundColor==s}else if(m=="img"){elm.style.backgroundImage==s}else if(m=="pos"){elm.style.backgroundPosition==s}else if(m=="rep"){elm.style.backgroundRepeat==s}else if(m=="attachment"){elm.style.backgroundAttachment==s}else{elm.style.background==s};return f},
+        bg:(s,m)=>{if(m=="col"){elm.style.backgroundColor=s}else if(m=="img"){elm.style.backgroundImage=s}else if(m=="pos"){elm.style.backgroundPosition=s}else if(m="rep"){elm.style.backgroundRepeat==s}else if(m="attachment"){elm.style.backgroundAttachment=s}else{elm.style.background=s};return f},
         bdr:(s)=>{elm.style.border=s;return f;},
         col:(s)=>{elm.style.color=s;return f;},
         pos:(s)=>{elm.style.position=s;return f;},
