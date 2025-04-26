@@ -53,7 +53,7 @@ const λ = (qs,ch,all) => {
 };
 λ.v = {};
 λ.tmpl={
-    alert:`<div class="lambda-alert" style="border-radius:10%;border:solid,skyblue,2px;padding:5px;display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
+    alert:`<div class="lambda-alert" style="border-radius:30%;border:solid,skyblue,6px;padding:5px;display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
 }
 λ.q=(qs,all)=>{if(all){return document.querySelectorAll(qs)}else{return document.querySelector(qs)}}
 λ.elm=(e)=>{if(typeof e == "object"){return e}else if(typeof e=="string"){return λ(e)}else{console.warn(`λ Warning: variable "${e}" can not be parsed as an element`)}}
