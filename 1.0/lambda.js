@@ -73,7 +73,7 @@ const λ = (qs,ch,all) => {
 λ.window={
     open: (...params)=>{window.open(...params)}
 }
-λ.dupe=(elm,adj)=>{let d=λ.elm(elm).cloneNode(true);if(adj){adj.insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
+λ.dupe=(qs,adj)=>{let elm=λ.elm(qs);let d=elm.cloneNode(true);if(adj){adj.insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
 λ.alert=(arg1,arg2,timeout=2000)=>{
     let alertArr=λ.tmpl.alert.split("||")
     let elm=document.createElement("div")
