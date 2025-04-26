@@ -41,7 +41,7 @@
 <span class="segoescript">icon-λjs Documentation</span>
 <script>/*demo*/n=(x)=>{return x};function runcodeblock(a,b=n){alert(eval(a.innerText))};λDEVMODE=true</script>
 <a href="#1">See it in action</a></nav><p><br><br> A small javascript library, that helps you shrink your code, and lets you relax.</p>
-<section><h3 id="1">See it in action (interactable)</h3>
+<section><h3 id="1">See it in action (interactable) (yes, this will destroy the page a bit)</h3>
   Simple JavaScript Selectors
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ("p") // Returns first p element, like querySelector</code></pre>
   Built-in alerts obsolete? We got alerts
@@ -61,7 +61,7 @@
   <br>Grab some files with XMLHttpRequests, swiftly!
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.getxhr("https://jsonplaceholder.typicode.com/todos/1", (e,r) => λ.alert("XHR Result", r))</code></pre>
   <br>Hate for loops and setTimeouts? Got your back!  <span class="repeat-test">Hello! </span>
-  <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.repeat(() => λ(".repeat-test",1).add("I will be copied 3 times across 3 seconds, 1 second each."), 3, 1000)</code></pre>
+  <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.repeat(() => λ(".repeat-test",1).add("||-----I will be copied 3 times 1s/ea----||"), 3, 1000)</code></pre>
   <br>Want swift JavaScript CSS Selectors, and even better CHAIN them? λ.css() has got you covered!.. And wait, I almost forgot that you can also connect it with λ()! <span class="css-test">Hello!</span>
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.css(".css-test").bg("black","col").col("white").other("font-family","'Beau Rivage'").λ().add(" World")</code></pre>
   </section>
