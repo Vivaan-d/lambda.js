@@ -1,7 +1,25 @@
 /*
 lambda.JS (λ)
-Reintroduction
-V1.0.1
+release: 1.1.0
+author: Vivaan D.
+description: A simple, lightweight, and easy-to-use JavaScript library for DOM manipulation and utility functions.
+usage:
+    λ(selector:string/HTMLElement) // Selects an element or elements
+    λ(selector, true) // Returns a function with the selected element
+    λ(selector, false, true) // Returns all elements matching the selector
+    λ(selector).css() // Returns a function to manipulate CSS properties
+    λ(selector).addhtml() // Adds HTML to the selected element
+    λ(selector).sethtml() // Sets HTML for the selected element
+    λ(selector).dupe() // Duplicates the selected element
+    λ.alert() // Displays an alert message
+    λ.getxhr(url, callback()) // Makes an XMLHttpRequest executes a callback function
+    λ.replacehtml() // Replaces HTML in the selected element
+    λ.repeat() // Repeats a function a specified number of times
+    λ.window.open() // Opens a new window
+    λ.v // Version information
+    λ.tmpl // Template strings
+    λ.tmpl.alert // Alert template
+V1.1.0
 
 GitHub & Documentation: 
 https://github.com/Vivaan-d/lambda.js
@@ -24,7 +42,7 @@ const λ = (qs,ch,all) => {
             dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});devlog(this);devlog(f);return f;},
             css:()=>{return λ.css(elm)}
         }
-        if(all)devlog(all," all + ch");
+        if(all)devlog(all," all + ch");console.warn("λ Warning: 'all' can not be used along with 'ch'==true. Treating 'all' as false.");
         return f;
     }else{
         let a=λ.q(qs,all)
@@ -35,7 +53,10 @@ const λ = (qs,ch,all) => {
 λ.cc = function(str) {
     return String(str).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
-λ.css = (qs) => { // lazily made
+λ.css = (qs) => { // lazily made for real use
+    if(!qs){console.error("λ Error: 'qs' is not defined.");return null}
+    let elm=λ.elm(qs)
+    if(!elm.style){console.warn(`λ Error: Invalid element reference. Ref: ${typeof qs} 'qs' in ${this}: `,qs);return null}
     let elm=λ.elm(qs)
     let f={
         elm:elm,
