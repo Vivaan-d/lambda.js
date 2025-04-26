@@ -57,7 +57,7 @@
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.getxhr("https://jsonplaceholder.typicode.com/todos/1", (e,r) => λ.alert("XHR Result", r))</code></pre>
   <br>Hate for loops and setTimeouts? Got your back!  <span class="repeat-test">Hello! </span>
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.repeat(() => λ("repeat-test").addhtml("I will be copied 3 times across 3 seconds, 1 second each."), 3, 1000)</code></pre>
-  <br>Want swift JavaScript CSS Selectors? λ.css() has got you covered! <span class="css-test">Hello!</span>
+  <br>Want swift JavaScript CSS Selectors, and even better CHAIN them? λ.css() has got you covered! <span class="css-test">Hello!</span>
   <pre><code class="lang-javascript" onclick="runcodeblock(this)">λ.css("body").bg("black").col("white").other("font-family","'Beau Rivage'")</code></pre>
   </section>
     Anyways. Here's a evaluate input for you to play around with -> <input id="eval"><button onclick="λ.alert('eval',eval(λ('#eval').value))">Evaluate</button>
@@ -69,6 +69,6 @@
           hljs.highlightElement(el);
         });
       });
-      λ.replaceHTML("body","icon-λjs", '<span style="border-radius: 20%;padding: 10px;color: rgb(213, 166, 248); font-family: monospace; font-size: 20px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(31, 23, 49); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">λ.js</span>')</script>
+      λ.replacehtml("body","icon-λjs", '<span style="border-radius: 20%;padding: 10px;color: rgb(213, 166, 248); font-family: monospace; font-size: 20px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(31, 23, 49); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">λ.js</span>')</script>
 </body>
 </html>

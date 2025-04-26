@@ -18,7 +18,7 @@ const λ = (qs,ch,all) => {
             elm:elm,
             ex:[],
             delete:()=>λ.q(qs).remove(),
-            replace:(x,y)=>{λ.replaceHTML(elm,x,y);return f;devlog(this);devlog(f);},
+            replace:(x,y)=>{λ.replacehtml(elm,x,y);return f;devlog(this);devlog(f);},
             add:(x)=>{λ.addhtml(elm,x);return f;devlog(this);devlog(f);},
             set:(x)=>{λ.sethtml(elm,x);return f;devlog(this);devlog(f);},
             dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});return f;devlog(this);devlog(f);}
@@ -31,7 +31,9 @@ const λ = (qs,ch,all) => {
         devlog(qs,all,a);
     }
 };
-
+λ.cc = function(str) {
+    return String(str).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+}
 λ.css = (qs) => { // lazily made
     let elm=λ.elm(qs)
     let f={
@@ -42,7 +44,7 @@ const λ = (qs,ch,all) => {
         pos:(s)=>{elm.style.position=s;return this;},
         block:()=>{elm.style.display="block";return this;},
         hw:(h,w)=>{if(h===false){elm.style.height=h};if(w===false){elm.style.width=w};return this;},
-        other:(st,s)=>{elm.style[st.replace("-","")]=s;return this},
+        other:(st,s)=>{elm.style[λ.cc(st)]=s;return this},
         sesl:()=>{return λ(elm,1);},
         λ:()=>{return λ(elm,1);}
     }
@@ -88,7 +90,7 @@ const λ = (qs,ch,all) => {
     xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
-λ.replaceHTML=(elm,x,y)=>{
+λ.replacehtml=(elm,x,y)=>{
     λ.elm(elm).innerHTML=λ.elm(elm).innerHTML.replace(x,y)
 }
 λ.repeat=(func,amt,interval)=>{if(interval){let i=0;let s=setInterval(()=>{if(i<amt){i++;func()}else{clearInterval(s)}},interval);return s;}else{for (let i=0;i<amt;i++) {func()}}}
