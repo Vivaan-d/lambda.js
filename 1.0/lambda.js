@@ -21,7 +21,8 @@ const λ = (qs,ch,all) => {
             replace:(x,y)=>{λ.replacehtml(elm,x,y);devlog(this);devlog(f);return f;},
             add:(x)=>{λ.addhtml(elm,x);devlog(this);devlog(f);return f;},
             set:(x)=>{λ.sethtml(elm,x);devlog(this);devlog(f);return f;},
-            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});devlog(this);devlog(f);return f;}
+            dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});devlog(this);devlog(f);return f;},
+            css:()=>{return λ.css(elm)}
         }
         if(all)devlog(all," all + ch");
         return f;
