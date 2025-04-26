@@ -39,12 +39,20 @@ const λ = (qs,ch,all) => {
     let elm=λ.elm(qs)
     let f={
         elm:elm,
-        bg:(s,m)=>{if(m=="col"){elm.style.backgroundColor=s}else if(m=="img"){elm.style.backgroundImage=s}else if(m=="pos"){elm.style.backgroundPosition=s}else if(m="rep"){elm.style.backgroundRepeat==s}else if(m="attachment"){elm.style.backgroundAttachment=s}else{elm.style.background=s};return f},
+        bg:(s,m)=>{
+            if(m==="col"){elm.style.backgroundColor=s}
+            else if(m==="img"){elm.style.backgroundImage=s}
+            else if(m==="pos"){elm.style.backgroundPosition=s}
+            else if(m==="rep"){elm.style.backgroundRepeat=s}
+            else if(m==="attachment"){elm.style.backgroundAttachment=s}
+            else{elm.style.background=s}
+            return f;
+        },
         bdr:(s)=>{elm.style.border=s;return f;},
         col:(s)=>{elm.style.color=s;return f;},
         pos:(s)=>{elm.style.position=s;return f;},
         block:()=>{elm.style.display="block";return f;},
-        hw:(h,w)=>{if(h===false){elm.style.height=h};if(w===false){elm.style.width=w};return f;},
+        hw:(h,w)=>{if(h!=null){elm.style.height=h};if(w!=null){elm.style.width=w};return f;},
         other:(st,s)=>{elm.style[λ.cc(st)]=s;return f},
         sesl:()=>{return λ(elm,1);},
         λ:()=>{return λ(elm,1);}
@@ -74,7 +82,7 @@ const λ = (qs,ch,all) => {
 λ.window={
     open: (...params)=>{window.open(...params)}
 }
-λ.dupe=(qs,adj)=>{let elm=λ.elm(qs);let d=elm.cloneNode(true);if(adj){adj.insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
+λ.dupe=(qs,adj)=>{let elm=λ.elm(qs);let d=elm.cloneNode(true);if(adj){elm(adj).insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
 λ.alert=(arg1,arg2,timeout=2000)=>{
     let alertArr=λ.tmpl.alert.split("||")
     let elm=document.createElement("div")
