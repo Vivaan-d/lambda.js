@@ -124,7 +124,6 @@ const λ = (qs,ch,all) => {
 λ.window={
     open: (...params)=>{window.open(...params)}
 }
-// localstorage set/get system
 λ.localstorage=(...p)=>{
     var f={
     set:(k,v)=>{localStorage.setItem(k,v);return λ.localstorage.get(k);return f;},
