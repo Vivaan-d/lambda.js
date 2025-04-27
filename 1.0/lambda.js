@@ -124,24 +124,24 @@ const λ = (qs,ch,all) => {
 λ.window={
     open: (...params)=>{window.open(...params)}
 }
+
 λ.localstorage=(...p)=>{
-    var f={
-    set:(k,v)=>{localStorage.setItem(k,v);return λ.localstorage.get(k);return f;},
-    get:(k)=>{return localStorage.getItem(k);return f;},
-    del:(k)=>{localStorage.removeItem(k);return λ.localstorage.get(k);return f;},
-    clear:()=>{localStorage.clear();return f;},
-    keys:()=>{let obj={};for (let i=0;i<localStorage.length;i++){let key=localStorage.key(i);obj[key]=λ.localstorage.get(key)};return obj}, // these 7 can't be chained. not like they would if they could
-    keynms:()=>{let arr=[];for (let i=0;i<localStorage.length;i++){arr.push(localStorage.key(i))};return arr},
-    vals:()=>{let arr=[];for (let i=0;i<localStorage.length;i++){arr.push(localStorage.getItem(localStorage.key(i)))};return arr},
-    length:()=>{return localStorage.length},
-    has:()=>{if(localStorage.length>0){return true}else{return false}},
-    isEmpty:()=>{if(localStorage.length==0){return true}else{return false}},
-    isFull:()=>{if(localStorage.length==localStorage.length){return true}else{return false};}
-    }
     if(p){p.shift();f[p](p)}
+    var f={
+        set:(k,v)=>{localStorage.setItem(k,v);return f;},
+        get:(k)=>{return localStorage.getItem(k);}, // oh and this
+        del:(k)=>{localStorage.removeItem(k);return f;},
+        clear:()=>{localStorage.clear();return f;},
+        keys:()=>{let obj={};for (let i=0;i<localStorage.length;i++){let key=localStorage.key(i);obj[key]=λ.localstorage.get(key)};return obj}, // these 7 can't be chained. not like they would if they could
+        keynms:()=>{let arr=[];for (let i=0;i<localStorage.length;i++){arr.push(localStorage.key(i))};return arr},
+        vals:()=>{let arr=[];for (let i=0;i<localStorage.length;i++){arr.push(localStorage.getItem(localStorage.key(i)))};return arr},
+        length:()=>{return localStorage.length}
+    }
     return f;
 }
 λ.dupe=(qs,adj)=>{let elm=λ.elm(qs);let d=elm.cloneNode(true);if(adj){elm(adj).insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
+
+
 λ.alert=(arg1,arg2,timeout=2000)=>{
     let alertArr=λ.tmpl.alert.split("||")
     let elm=document.createElement("div")
