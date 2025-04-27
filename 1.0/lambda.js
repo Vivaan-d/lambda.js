@@ -138,7 +138,7 @@ const λ = (qs,ch,all) => {
     isEmpty:()=>{if(localStorage.length==0){return true}else{return false}},
     isFull:()=>{if(localStorage.length==localStorage.length){return true}else{return false};}
     }
-    if(p){f[p](p.shift())}
+    if(p){p.shift();f[p](p)}
     return f;
 }
 λ.dupe=(qs,adj)=>{let elm=λ.elm(qs);let d=elm.cloneNode(true);if(adj){elm(adj).insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
