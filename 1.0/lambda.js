@@ -24,10 +24,12 @@ V1.1.0
 GitHub & Documentation: 
 https://github.com/Vivaan-d/lambda.js
 */
+var l=0;
+var ldint=setInterval(()=>{log++},1)
 
 var λDEVMODE=false;
 var λDEVALERTVIS=true;
-var devlog=(log,warn)=>{if(λDEVMODE)warn?console.warn("λ DEVLOG WARNING: "+String(log)):console.log("λ DEVLOG: "+String(log))}
+var devlog=(log,warn)=>{if(λDEVMODE)warn?λ.warn("λ DEVLOG WARNING: "+String(log)):λ.log("λ DEVLOG: "+String(log))}
 const λ = (qs,ch,all) => {
     if(ch){
         let elm=λ.elm(qs)
@@ -42,7 +44,7 @@ const λ = (qs,ch,all) => {
             dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});devlog(this);devlog(f);return f;},
             css:()=>{return λ.css(elm)}
         }
-        if(all)devlog(all," all + ch");console.warn("λ Warning: 'all' can not be used along with 'ch'==true. Treating 'all' as false.");
+        if(all)devlog(all," all + ch");λ.warn("λ Warning: 'all' can not be used along with 'ch'==true. Treating 'all' as false.");
         return f;
     }else{
         let a=λ.q(qs,all)
@@ -50,13 +52,19 @@ const λ = (qs,ch,all) => {
         return a
     }
 };
+
+λ.logs=[];
+λ.log=(x="λ Log: Unspecificed")=>{console.log(x);logs.push([x,"log",new Date().toLocaleString()])}
+λ.warn=(x="λ Warn: Unspecificed")=>{console.warn(x);logs.push([x,"warn",new Date().toLocaleString()])}
+λ.err=(x="λ Err: Unspecificed")=>{console.error(x);logs.push([x,"error",new Date().toLocaleString()])}
+
 λ.cc = function(str) {
     return String(str).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
 λ.css = (qs) => { // lazily made for real use
-    if(!qs){console.error("λ Error: 'qs' is not defined.");return null}
+    if(!qs){λ.err("λ Error: 'qs' is not defined.");return null}
     let elm=λ.elm(qs)
-    if(!elm.style){console.warn(`λ Error: Invalid element reference. Ref: ${typeof qs} 'qs': `,qs);return null}
+    if(!elm.style){λ.err(`λ Error: Invalid element reference. Ref: ${typeof qs} 'qs': `,qs);return null}
     let f={
         elm:elm,
         bg:(s,m)=>{
@@ -68,9 +76,14 @@ const λ = (qs,ch,all) => {
             else{elm.style.background=s}
             return f;
         },
-        bdr:(s)=>{elm.style.border=s;return f;},
-        col:(s)=>{elm.style.color=s;return f;},
-        pos:(s)=>{elm.style.position=s;return f;},
+        bdr:(s="2px,solid,black")=>{elm.style.border=s;return f;},
+        col:(s="black")=>{elm.style.color=s;return f;},
+        pos:(s="relative")=>{elm.style.position=s;return f;},
+        absol:()=>{elm.style.position="absolute";return f;},
+        relat:()=>{elm.style.position="relative";return f;},
+        fixed:()=>{elm.style.position="fixed";return f;},
+        bdr_rad:(s="10px")=>{elm.style.borderRadius=s;return f;},
+        pad:(s="5px")=>{elm.style.padding=s;return f;},
         block:()=>{elm.style.display="block";return f;},
         hw:(h,w)=>{if(h!=null){elm.style.height=h};if(w!=null){elm.style.width=w};return f;},
         other:(st,s)=>{elm.style[λ.cc(st)]=s;return f},
@@ -84,7 +97,7 @@ const λ = (qs,ch,all) => {
     alert:`<div class="lambda-alert" style="border-radius:30%;border:solid,skyblue,6px;padding:5px;display:block!important;position:fixed!important;top:20px;right:20px;height:200px;width:600px;background-color:deepskyblue!important;color:white!important;"><h4>||</h4><p>||</p></div>`
 }
 λ.q=(qs,all)=>{if(all){return document.querySelectorAll(qs)}else{return document.querySelector(qs)}}
-λ.elm=(e)=>{if(typeof e == "object"){return e}else if(typeof e=="string"){return λ(e)}else{console.warn(`λ Warning: variable "${e}" can not be parsed as an element`)}}
+λ.elm=(e)=>{if(typeof e == "object"){return e}else if(typeof e=="string"){return λ(e)}else{λ.warn(`λ Warning: variable "${e}" can not be parsed as an element`)}}
 λ.lw=(x)=>{return String(x).toLowerCase()}
 λ.hw=(x)=>{return String(x).toUpperCase()}
 λ.inhtml=(elm) => {
@@ -99,8 +112,35 @@ const λ = (qs,ch,all) => {
     λ.elm(elm).innerHTML=String(str)
     return λ.elm(elm).innerHTML
 }
+λ.rand=(x1,x2) => {
+    return Math.random()*(x2-x1)+x1;
+}
+λ.num=(x) => {
+    return Number(x);
+}
+λ.str=(x) => {
+    return String(x);
+}
 λ.window={
     open: (...params)=>{window.open(...params)}
+}
+// localstorage set/get system
+λ.localstorage=(...p)=>{
+    var f={
+    set:(k,v)=>{localStorage.setItem(k,v);return λ.localstorage.get(k);return f;},
+    get:(k)=>{return localStorage.getItem(k);return f;},
+    del:(k)=>{localStorage.removeItem(k);return λ.localstorage.get(k);return f;},
+    clear:()=>{localStorage.clear();return f;},
+    keys:()=>{let obj={};for (let i=0;i<localStorage.length;i++){let key=localStorage.key(i);obj[key]=λ.localstorage.get(key)};return obj}, // these 7 can't be chained. not like they would if they could
+    keynms:()=>{let arr=[];for (let i=0;i<localStorage.length;i++){arr.push(localStorage.key(i))};return arr},
+    vals:()=>{let arr=[];for (let i=0;i<localStorage.length;i++){arr.push(localStorage.getItem(localStorage.key(i)))};return arr},
+    length:()=>{return localStorage.length},
+    has:()=>{if(localStorage.length>0){return true}else{return false}},
+    isEmpty:()=>{if(localStorage.length==0){return true}else{return false}},
+    isFull:()=>{if(localStorage.length==localStorage.length){return true}else{return false};}
+    }
+    if(p){f[p](p.shift())}
+    return f;
 }
 λ.dupe=(qs,adj)=>{let elm=λ.elm(qs);let d=elm.cloneNode(true);if(adj){elm(adj).insertAdjacentElement("afterend",d);return d;}else{elm.insertAdjacentElement("afterend",d);return d;}}
 λ.alert=(arg1,arg2,timeout=2000)=>{
@@ -116,7 +156,7 @@ const λ = (qs,ch,all) => {
     var xhr=new XMLHttpRequest
     xhr.open("GET",address)
     xhr.send()
-    xhr.onerror=()=>{console.error(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
+    xhr.onerror=()=>{λ.err(`λ Error: ${xhr.statusText} STATUS: ${xhr.status}`)};
     xhr.addEventListener("readystatechange",(e) => {if (xhr.readyState===4){func(e,xhr.responseText,xhr.status,xhr.statusText);}});
 }
 λ.replacehtml=(elm,x,y)=>{
@@ -128,3 +168,5 @@ Object.freeze(λ.window)
 Object.freeze(λ.tmpl)
 const v = λ.v;
 const lambda=λ
+clearInterval(ldint)
+λ.log("λ.js successfully loaded.")
