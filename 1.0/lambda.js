@@ -25,7 +25,7 @@ GitHub & Documentation:
 https://github.com/Vivaan-d/lambda.js
 */
 var l=0;
-var ldint=setInterval(()=>{log++},1)
+var ldint=setInterval(()=>{l++},1)
 
 var λDEVMODE=false;
 var λDEVALERTVIS=true;
@@ -54,9 +54,9 @@ const λ = (qs,ch,all) => {
 };
 
 λ.logs=[];
-λ.log=(x="λ Log: Unspecificed")=>{console.log(x);logs.push([x,"log",new Date().toLocaleString()])}
-λ.warn=(x="λ Warn: Unspecificed")=>{console.warn(x);logs.push([x,"warn",new Date().toLocaleString()])}
-λ.err=(x="λ Err: Unspecificed")=>{console.error(x);logs.push([x,"error",new Date().toLocaleString()])}
+λ.log=(x="λ Log: Unspecificed")=>{console.log(x);λ.logs.push([x,"log",new Date().toLocaleString()])}
+λ.warn=(x="λ Warn: Unspecificed")=>{console.warn(x);λ.logs.push([x,"warn",new Date().toLocaleString()])}
+λ.err=(x="λ Err: Unspecificed")=>{console.error(x);λ.logs.push([x,"error",new Date().toLocaleString()])}
 
 λ.cc = function(str) {
     return String(str).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
