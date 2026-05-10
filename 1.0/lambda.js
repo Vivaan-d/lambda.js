@@ -1,6 +1,6 @@
 /*
 lambda.JS (λ)
-release: 1.1.0
+release: 1.1.1
 author: Vivaan D.
 description: A simple, lightweight, and easy-to-use JavaScript library for DOM manipulation and utility functions.
 usage:
@@ -38,7 +38,11 @@ const λ = (qs,ch,all) => {
             elm:elm,
             ex:[],
             delete:()=>λ.q(qs).remove(),
+            remove:()=>λ.q(qs).remove(),
+            rem:()=>λ.q(qs).remove(),
+            del:()=>λ.q(qs).remove(),
             replace:(x,y)=>{λ.replacehtml(elm,x,y);devlog(this);devlog(f);return f;},
+            rep:(x,y)=>{λ.replacehtml(elm,x,y);devlog(this);devlog(f);return f;},
             add:(x)=>{λ.addhtml(elm,x);devlog(this);devlog(f);return f;},
             set:(x)=>{λ.sethtml(elm,x);devlog(this);devlog(f);return f;},
             dupe:()=>{let d=λ.dupe(elm);elm.insertAdjacentElement("afterend",d);f.ex.push({e:d,c:λ(d,1)});devlog(this);devlog(f);return f;},
@@ -123,6 +127,14 @@ const λ = (qs,ch,all) => {
 }
 λ.window={
     open: (...params)=>{window.open(...params)}
+}
+λ.orderyield=(functions=[],time=[])=>{
+    if(functions.length!=time.length){λ.err("λ Error: 'functions' and 'time' arrays must be of the same length.");return}
+    let totalTime=0;
+    for (let i=0;i<functions.length;i++){
+        setTimeout(functions[i],time[i]+totalTime);
+        totalTime+=time[i];
+    }
 }
 
 λ.localstorage=(...p)=>{
